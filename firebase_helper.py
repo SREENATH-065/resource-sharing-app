@@ -1,19 +1,17 @@
 import firebase_admin
 from firebase_admin import credentials, db
 import streamlit as st
-import json
-import uuid
-import datetime
 
-# Initialize Firebase Admin SDK
+#initialize firebase
 
 def init_firebase():
     if not firebase_admin._apps:
-        firebase_config = json.loads(st.secrets["FIREBASE_CONFIG"])
-        cred = credentials.Certificate(firebase_config)
+        firebase_config = st.secrets["FIREBASE_CONFIG"]
+        cred = credentials.Certificate(dict(firebase_config))
         firebase_admin.initialize_app(cred, {
-            'databaseURL': firebase_config.get("databaseURL")
+            "databaseURL": firebase_config["databaseURL"]
         })
+
 
 
 # Add new resource
