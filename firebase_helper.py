@@ -1,6 +1,7 @@
-# firebase_helper.py
 import firebase_admin
 from firebase_admin import credentials, db
+import streamlit as st
+import json
 import uuid
 import datetime
 
@@ -8,10 +9,12 @@ import datetime
 
 def init_firebase():
     if not firebase_admin._apps:
-        cred = credentials.Certificate("firebase_config.json")
+        firebase_config = json.loads(st.secrets["FIREBASE_CONFIG"])
+        cred = credentials.Certificate(firebase_config)
         firebase_admin.initialize_app(cred, {
-            'databaseURL': "https://resourcesharingapp-6f214-default-rtdb.firebaseio.com"
+            'databaseURL': firebase_config.get("databaseURL")
         })
+
 
 # Add new resource
 
