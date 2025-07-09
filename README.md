@@ -67,9 +67,7 @@ streamlit run app.py
 
 ## 📸 Preview
 
-> _(Add your Streamlit Cloud link or screenshot here if hosted)_
-
----
+https://resource-sharing-app.streamlit.app
 
 ## 📄 License
 
